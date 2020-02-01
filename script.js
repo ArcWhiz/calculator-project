@@ -42,8 +42,8 @@ function getVal(){
             decimalPressed = false;
             break;
         case 'backspace':
-            var result = parseInt(parseFloat(display.innerText)/10);
-            display.innerText = result;
+            if(display.innerText[display.innerText.length - 1] == '.') decimalPressed = false;
+            display.innerText = display.innerText.slice(0,-1);
             break;
         case '+-':
             var result = parseFloat(display.innerText) * -1;
