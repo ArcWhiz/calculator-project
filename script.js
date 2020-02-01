@@ -6,6 +6,7 @@ operand2 = null;
 operator = null;
 equalPressed = false;
 
+//Function to get the value of button pressed
 function getVal(){
     var value = this.getAttribute('data-value');
     switch(value){
