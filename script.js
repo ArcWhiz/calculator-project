@@ -5,6 +5,7 @@ operand1 = 0;
 operand2 = null;
 operator = null;
 equalPressed = false;
+decimalPressed = false;
 
 //Function to get the value of button pressed
 function getVal(){
@@ -14,26 +15,31 @@ function getVal(){
             operand1 = parseFloat(display.innerText);
             operator = '+';
             display.innerText = '';
+            decimalPressed = false;
             break;
         case '-':
             operand1 = parseFloat(display.innerText);
             operator = '-';
             display.innerText = '';
+            decimalPressed = false;
             break;
         case '*':
             operand1 = parseFloat(display.innerText);
             operator = '*';
             display.innerText = '';
+            decimalPressed = false;
             break;
         case '/':
             operand1 = parseFloat(display.innerText);
             operator = '/';
             display.innerText = '';
+            decimalPressed = false;
             break;
         case '%':
             operand1 = parseFloat(display.innerText);
             operator = '%';
             display.innerText = '';
+            decimalPressed = false;
             break;
         case 'backspace':
             var result = parseInt(parseFloat(display.innerText)/10);
@@ -45,6 +51,7 @@ function getVal(){
             break;
         case '=':
             equalPressed = true;
+            decimalPressed = false;
             operand2 = parseFloat(display.innerText);
             switch(operator){
                 case '+':
@@ -73,6 +80,12 @@ function getVal(){
             operand2 = null;
             operator = null;
             display.innerText = '';
+            equalPressed = false;
+            decimalPressed = false;
+            break;
+        case '.':
+            if(!decimalPressed) display.innerText += value;
+            decimalPressed = true;
             break;
         default:
             if(equalPressed) display.innerText = value;
